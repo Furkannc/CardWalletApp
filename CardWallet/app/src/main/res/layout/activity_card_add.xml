@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    tools:context=".CardAdd">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:background="@color/yellow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="25dp"
+      >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/blue">
+
+            <TextView
+                android:id="@+id/txtCardName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="170dp"
+                android:text="Card name"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageView
+                android:id="@+id/CardIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:src="@drawable/visa"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/CardUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginBottom="32dp"
+                android:text="Card UserName"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/CardNum" />
+
+            <TextView
+                android:id="@+id/CardExpDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:layout_marginBottom="32dp"
+                android:text="10/10"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/CardCvv"
+                app:layout_constraintStart_toEndOf="@+id/CardUserName"
+                app:layout_constraintTop_toBottomOf="@+id/CardNum"
+                app:layout_constraintVertical_bias="0.47" />
+
+            <TextView
+                android:id="@+id/CardCvv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="32dp"
+                android:text="105"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/CardNum"
+                app:layout_constraintVertical_bias="0.47" />
+
+            <TextView
+                android:id="@+id/CardNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginBottom="70dp"
+                android:text="0000 0000 0000 0000"
+                android:textColor="@color/white"
+                android:textSize="27sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:visibility="invisible"
+                android:id="@+id/imgCopy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                app:layout_constraintBottom_toTopOf="@+id/CardCvv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/CardNum"
+                app:layout_constraintTop_toBottomOf="@+id/CardIcon"
+                app:layout_constraintVertical_bias="0.61"
+                app:srcCompat="@drawable/copy" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:boxStrokeColor="@color/blue"
+        app:boxBackgroundColor="@color/blue"
+        android:hint="Card Name">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtCardName"
+            android:singleLine="true"
+            android:imeOptions="actionNext"
+            android:nextFocusForward="@id/edtCardNum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="textOnChanged" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:boxStrokeColor="@color/blue"
+        app:boxBackgroundColor="@color/blue"
+        android:hint="Card Number"
+
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtCardNum"
+            android:inputType="number"
+            android:maxLines="1"
+            android:onClick="textOnChanged"
+            android:maxLength="16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:imeOptions="actionNext"
+            android:nextFocusForward="@id/CardUserName"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            app:boxStrokeColor="@color/blue"
+            app:boxBackgroundColor="@color/blue"
+            android:hint="Card UserName"
+
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtCardUserName"
+                android:maxLines="1"
+                android:onClick="textOnChanged"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:imeOptions="actionNext"
+                android:nextFocusForward="@id/edtExpDate"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_weight="1.2"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/blue"
+            android:layout_margin="5dp"
+            app:boxStrokeColor="@color/blue"
+            android:hint="MM/YY"
+
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtExpDate"
+                android:inputType="text"
+                android:onClick="textOnChanged"
+                android:maxLength="5"
+                android:maxLines="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:imeOptions="actionNext"
+                android:nextFocusForward="@id/edtCVV"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+      <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_weight="1.4"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+          app:boxStrokeColor="@color/blue"
+          app:boxBackgroundColor="@color/blue"
+            android:hint="CVV"
+
+          >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtCVV"
+                android:inputType="number"
+                android:onClick="textOnChanged"
+                android:maxLength="3"
+                android:maxLines="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:imeOptions="actionNext"
+                android:nextFocusForward="@id/btnSave"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+<LinearLayout
+    android:layout_margin="10dp"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <at.markushi.ui.CircleButton
+        android:onClick="btnClickColor"
+        app:cb_color="@color/blue"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/btnBlue" />
+
+    <at.markushi.ui.CircleButton
+        app:cb_color="@color/red"
+        android:onClick="btnClickColor"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/btnRed" />
+
+    <at.markushi.ui.CircleButton
+        android:onClick="btnClickColor"
+        app:cb_color="@color/green"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/btnGreen" />
+
+    <at.markushi.ui.CircleButton
+        android:onClick="btnClickColor"
+        app:cb_color="@color/yellow"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/btnYellow" />
+
+    <at.markushi.ui.CircleButton
+        android:onClick="btnClickColor"
+        app:cb_color="@color/pink"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/btnPink" />
+
+    <at.markushi.ui.CircleButton
+        android:onClick="btnClickColor"
+        app:cb_color="@color/purple"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/btnPurple" />
+
+    <at.markushi.ui.CircleButton
+        android:onClick="btnClickColor"
+        app:cb_color="@color/orange"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/btnOrange" />
+</LinearLayout>
+
+
+
+       <Button
+           android:backgroundTint="@color/blue"
+           android:id="@+id/btnSave"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_margin="5dp"
+           android:padding="15dp"
+           android:onClick="BtnSaveClick"
+           android:text="Save Card"
+           android:textSize="20sp" />
+
+       <Button
+           android:visibility="invisible"
+           android:id="@+id/btnDelete"
+           android:backgroundTint="@color/red"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="10dp"
+           android:layout_marginRight="10dp"
+           android:padding="15dp"
+           android:onClick="btnDeleteClick"
+           android:text="Delete Card"
+           android:textSize="20sp" />
+
+
+</LinearLayout>
+
+</ScrollView>
